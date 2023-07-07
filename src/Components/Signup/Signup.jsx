@@ -8,7 +8,7 @@ const Signup = () => {
   const navigate=useNavigate()
   const [password, setpassword] = useState("");
   return (
-    <div className=" bg-red-100 h-[calc(100vh-100px)] flex items-center justify-center ">
+    <div className=" h-[calc(100vh-100px)] flex items-center justify-center ">
       <form className=" min-w-fit w-5/12 rounded-lg shadow-md border-none p-20 bg-gray-50  " method="post" action="/signup">
         <div className=" text-2xl flex items-center justify-center font-semibold mb-10 ">SignUp</div>
      
