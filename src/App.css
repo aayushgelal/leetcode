@@ -1,0 +1,5 @@
+.custom-transition {
+    transition-property: all;
+    transition-duration: 1s;
+    /* Add any other transition-related properties as needed */
+  }
