@@ -3,6 +3,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import ButtonClick from "./ButtonClick";
 
 export default function AlertCard({ message, handleClick }) {
+  console.log(handleClick);
   return (
     <div className="fixed top-0 -z-10 h-full w-full  flex items-center justify-center">
       <div className="m-10 h-fit shadow-lg bg-gray-100 border-none font-bold p-10 align-middle">

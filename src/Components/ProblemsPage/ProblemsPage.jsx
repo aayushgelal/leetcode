@@ -67,8 +67,7 @@ const ProblemsPage = () => {
         <AlertCard
           message={show_alert}
           handleClick={() => {
-            console.log("clicked");
-            navigate(-1);
+            setshow_alert("");
           }}
         />
       ) : loading ? (
