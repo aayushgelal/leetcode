@@ -6,9 +6,10 @@ import ProblemsPage from '../ProblemsPage/ProblemsPage'
 import ProblemTable from './ProblemTable'
 import ButtonClick from '../Shared/ButtonClick'
 import { FaArrowCircleLeft, FaArrowCircleRight, FaArrowRight } from 'react-icons/fa'
+import LoadingScreen from '../LoadingScreen/LoadingScreen'
 
 const AllProblemsPage = () => {
-  const [problems,setproblems] =useState([]);
+  const [problems,setproblems] =useState(null);
   const [selected,setselected]= useState(1);
     const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -18,7 +19,7 @@ const AllProblemsPage = () => {
 
 
   const init =async () =>  {
-    const response=await fetch("http://localhost:3000/problems",{
+    const response=await fetch("https://leetcode-server.onrender.com/problems",{
       method:"GET",
       headers:{
         "Content-Type":"application/json"
@@ -26,13 +27,15 @@ const AllProblemsPage = () => {
 
     })
     const data=await response.json()
-  console.log(data) ;
-  setproblems(data.problems);
+   setproblems(data.problems);
 
 }
+
 useEffect(()=> {init()},[])
-  return (
-    <div className='flex flex-col h-screen'>
+return <div>
+{problems?
+  
+    <div className='flex flex-col h-screen problems'>
       <div className='flex flex-wrap text-mdjustify-start'>
       <ButtonClick name="All Topics" onclick={() => {
         setselected(1)
@@ -51,7 +54,11 @@ useEffect(()=> {init()},[])
       </div>
       <div className='flex justify-center text-gray-700 items-center space-x-2 mt-2'><FaArrowCircleLeft className='mx-2' onClick={() => setCurrentPage(currentPage-1)}></FaArrowCircleLeft>Page: {currentPage} <FaArrowCircleRight className='mx-2' onClick={() => setCurrentPage(currentPage+1)}></FaArrowCircleRight></div>
     </div>
-  )
+    
+  
+  :<LoadingScreen />
+    }
+    </div>
 }
 
 export default AllProblemsPage

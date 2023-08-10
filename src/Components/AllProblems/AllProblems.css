@@ -1,13 +1,12 @@
+.problems{
+    animation: opaq 0.3s ease-in;
 
-.Easy {
-    @apply bg-green-50
-   
 }
-.Medium {
-    @apply bg-yellow-100
-   
-}
-.Hard {
-    @apply bg-yellow-100
-   
+@keyframes opaq {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

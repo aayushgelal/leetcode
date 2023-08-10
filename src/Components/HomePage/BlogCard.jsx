@@ -23,7 +23,6 @@ export default function ({content}) {
 
 
 
-  console.log(cardstyle)
   return (
     <div className="w-200 m-3 bg-[#E7F9FF] animate rounded-lg shadow-md p-5 hover:scale-105 transition-transform  h-fit bg-zinc-50 cursor-pointer" style={cardstyle}>
     <p className="date">{content.date}</p>

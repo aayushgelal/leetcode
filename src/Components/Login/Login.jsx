@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 
 import "./Login.css"
 import { json } from 'react-router-dom';
 import InputButton from '../Shared/InputButton';
 import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from '../../App';
 
 const Login = () => {
   const [email,setemail]= useState("");
   const [password,setpassword]=useState("");
   const navigate=useNavigate();
+  const {setIsLoggedIn}=useContext(AuthContext)
   return (
  
     <div className=" h-[calc(100vh-100px)] flex items-center justify-center ">
@@ -22,7 +24,7 @@ const Login = () => {
         <button             className="text-lg w-[calc(100%-100px)] min-w-fit rounded-lg hover:text-gray-200 bg-gray-700 text-white px-10 py-2 w-25"
  type='submit' onClick={async e => {
           e.preventDefault();
-          const response = await fetch("http://localhost:3000/login", {
+          const response= await fetch("https://leetcode-server.onrender.com/login", {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json',
@@ -33,11 +35,13 @@ const Login = () => {
                 }),
               });
               const json=await response.json();
-              console.log(json);
+               console.log(json);
 
           if(response.status==200){
             localStorage.setItem("token", json.token);
             navigate('/problemset/all')
+            setIsLoggedIn(            localStorage.getItem("token")
+            )
           }else{
             alert(json.message);
           

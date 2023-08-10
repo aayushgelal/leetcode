@@ -5,3 +5,12 @@
 .nav-options {
     margin-right: 2rem;
 }
+.button{
+    color: '#757575';
+    transition:background-color 0.3s ease ;
+}
+.button:hover{
+    background-color: #374151;
+    color: white;
+
+}
